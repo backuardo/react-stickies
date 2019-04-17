@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Draggable from 'react-draggable';
 
 
 class Note extends Component {
@@ -6,8 +7,9 @@ class Note extends Component {
     super(props);
     this.state = {
       isEditing: false,
-      editedTitle: null,
-      editedContent: null,
+      editedTitle: '',
+      editedContent: '',
+      currPosition: null,
     };
   }
 
@@ -39,6 +41,19 @@ class Note extends Component {
 
   handleContentChange = (e) => {
     this.setState({ editedContent: e.target.value });
+  }
+
+  handleDrag = (e, ui) => {
+    const { x, y } = ui;
+    this.setState({ currPosition: { x, y } });
+  }
+
+  handleDragStop = () => {
+    const fields = {
+      x: this.state.x,
+      y: this.state.y,
+    };
+    this.props.onUpdate(this.props.id, fields);
   }
 
   renderEditButton = () => {
@@ -95,23 +110,35 @@ class Note extends Component {
 
   render() {
     return (
-      <div className="note">
-        <header>
-          {this.renderTitle()}
-          <div className="note-menu">
-            <i
-              onClick={this.handleDelete}
-              className="fas fa-trash-alt"
-              role="button"
-              tabIndex={0}
-            />
-            {this.renderEditButton()}
+      <Draggable
+        handle=".note"
+        // grid={[25, 25]}
+        defaultPosition={{ x: 20, y: 20 }
+          || { x: this.props.note.x, y: this.props.note.y }}
+        position={this.state.currPosition
+          || { x: this.props.note.x, y: this.props.note.y }}
+        onDrag={this.handleDrag}
+        onStop={this.handleDragStop}
+        enableUserSelectHack={!this.state.isEditing} // 😂 react-draggable github issues
+      >
+        <div className="note">
+          <header>
+            {this.renderTitle()}
+            <div className="note-menu">
+              <i
+                onClick={this.handleDelete}
+                className="fas fa-trash-alt"
+                role="button"
+                tabIndex={0}
+              />
+              {this.renderEditButton()}
+            </div>
+          </header>
+          <div className="note-content">
+            {this.renderContent()}
           </div>
-        </header>
-        <div className="note-content">
-          {this.renderContent()}
         </div>
-      </div>
+      </Draggable>
     );
   }
 }
