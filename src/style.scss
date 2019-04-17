@@ -1,13 +1,39 @@
+$black: rgb(0, 0, 0);
+$white: rgb(255, 255, 255);
+
 body, html {
     font-family: "Roboto", sans-serif;
-    background: linear-gradient(to bottom, #b6f9f9 0%,#bcf6e7 40%,#beffed 100%);
     height: 100%;
 }
 
-.logo {
-    background-image: url('img/logo.svg');
-    width: 100px;
-    height: 100px;
-    background-repeat: no-repeat;
-    background-size: contain;
+#app {
+  border: 1px solid red;
+  height: 100vh;
+  width: 100vw;
+}
+
+#notes-list {
+  border: 1px solid green;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-color: rgba( $black, .1 );
+}
+
+#tool-bar {
+  border: 1px solid blue;
+  width: 50vw;
+  background-color: rgba( $black, .4 );
+}
+
+.note {
+  flex-basis: 200px;
+  background-color: rgba( $black, .2 );
+
+  .note-content {
+    min-height: 100px;
+  }
 }
