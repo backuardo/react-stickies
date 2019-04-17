@@ -3,17 +3,14 @@ $white: rgb(255, 255, 255);
 
 body, html {
     font-family: "Roboto", sans-serif;
-    height: 100%;
 }
 
 #app {
-  border: 1px solid red;
   height: 100vh;
   width: 100vw;
 }
 
 #notes-list {
-  border: 1px solid green;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -24,7 +21,6 @@ body, html {
 }
 
 #tool-bar {
-  border: 1px solid blue;
   width: 50vw;
   background-color: rgba( $black, .4 );
 }

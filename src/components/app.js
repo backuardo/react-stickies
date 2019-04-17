@@ -26,7 +26,9 @@ class App extends Component {
 
   updateNote = (id, fields) => {
     this.setState(prevState => ({
-      notes: prevState.notes.update(id, (n) => { return Object.assign({}, n, fields); }),
+      notes: prevState.notes.update(id, (n) => {
+        return Object.assign({}, n, fields);
+      }),
     }));
   };
 
@@ -34,7 +36,11 @@ class App extends Component {
     return (
       <div id="app">
         <ToolBar onSubmit={this.addNote} />
-        <NotesList notes={this.state.notes} onUpdateNote={this.updateNote} onDeleteNote={this.deleteNote} />
+        <NotesList
+          notes={this.state.notes}
+          onUpdateNote={this.updateNote}
+          onDeleteNote={this.deleteNote}
+        />
       </div>
     );
   }

@@ -68,9 +68,7 @@ class Note extends Component {
       return (
         <form>
           <input
-            placeholder={this.state.editedTitle
-              ? this.state.editedTitle
-              : this.props.note.title}
+            value={this.state.editedTitle || this.props.note.title}
             onChange={this.handleTitleChange}
           />
         </form>
@@ -85,9 +83,7 @@ class Note extends Component {
       return (
         <form>
           <textarea
-            value={this.state.editedContent
-              ? this.state.editedContent
-              : this.props.note.text}
+            value={this.state.editedContent || this.props.note.content}
             onChange={this.handleContentChange}
           />
         </form>
