@@ -35,64 +35,45 @@ class Note extends Component {
     this.handleEdit({ x, y });
   }
 
-  renderEditButton = () => {
-    if (this.state.isEditing) {
-      return (
-        <i
-          onClick={this.toggleIsEditing}
-          className="fas fa-check-circle"
-          role="button"
-          tabIndex={0}
-        />
-      );
-    } else {
-      return (
-        <i
-          onClick={this.toggleIsEditing}
-          className="fas fa-edit"
-          role="button"
-          tabIndex={0}
-        />
-      );
-    }
-  }
-
   renderTitle = () => {
+    const { title } = this.props.note;
     if (this.state.isEditing) {
       return (
         <form>
           <input
-            value={this.props.note.title}
+            value={title}
             onChange={this.handleTitleChange}
           />
         </form>
       );
     } else {
-      return this.props.note.title;
+      return title;
     }
   }
 
   renderContent = () => {
+    const { content } = this.props.note;
     if (this.state.isEditing) {
       return (
         <form>
           <textarea
-            value={this.props.note.content}
+            value={content}
             onChange={this.handleContentChange}
           />
         </form>
       );
     } else {
-      return this.props.note.content;
+      return content;
     }
   }
 
   render() {
+    const { x, y } = this.props.note;
     return (
       <Draggable
         handle=".fa-arrows-alt"
-        defaultPosition={{ x: this.props.note.x, y: this.props.note.y }}
-        position={{ x: this.props.note.x, y: this.props.note.y }}
+        defaultPosition={{ x, y }}
+        position={{ x, y }}
         onDrag={this.handleDrag}
         onStop={this.handleDragStop}
       >
@@ -106,7 +87,12 @@ class Note extends Component {
                 role="button"
                 tabIndex={0}
               />
-              {this.renderEditButton()}
+              <i
+                onClick={this.toggleIsEditing}
+                className={this.state.isEditing ? 'fas fa-check-circle' : 'fas fa-edit'}
+                role="button"
+                tabIndex={0}
+              />
               <i className="fas fa-arrows-alt" role="button" tabIndex={0} />
             </div>
           </header>
