@@ -1,47 +1,41 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 
-class ToolBar extends Component {
-  constructor(props) {
-    super(props);
+function ToolBar(props) {
+  const [userInput, setUserInput] = useState('');
 
-    this.state = { userInput: '' };
-  }
+  const handleInputChange = (e) => {
+    setUserInput(e.target.value);
+  };
 
-  handleInputChange = (e) => {
-    this.setState({ userInput: e.target.value });
-  }
-
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     const id = Math.floor(Math.random() * Math.floor(100));
     const note = {
-      title: this.state.userInput,
+      title: userInput,
       content: '',
       x: 0,
       y: 0,
       zIndex: 100,
     };
 
-    this.props.onSubmit(id, note);
-    this.setState({ userInput: '' });
+    props.onSubmit(id, note);
+    setUserInput('');
     e.preventDefault();
-  }
+  };
 
-  render() {
-    return (
-      <div id="tool-bar">
-        <h1>react-notes</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input
-            onChange={this.handleInputChange}
-            value={this.state.userInput}
-            placeholder="enter a title"
-          />
-          <input type="submit" value="new note" />
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div id="tool-bar">
+      <h1>react-notes</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          onChange={handleInputChange}
+          value={userInput}
+          placeholder="enter a title"
+        />
+        <input type="submit" value="new note" />
+      </form>
+    </div>
+  );
 }
 
 export default ToolBar;
