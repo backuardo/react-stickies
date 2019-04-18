@@ -1,39 +1,47 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { Map } from 'immutable';
 import ToolBar from './tool_bar';
 import NotesList from './notes_list';
 
+class App extends Component {
+  constructor(props) {
+    super(props);
 
-function App(props) {
-  const [notes, setNotes] = useState(Map()); // eslint-disable-line new-cap
+    this.state = { notes: Map() }; // eslint-disable-line new-cap
+  }
 
-  const deleteNote = (id) => {
-    const newNotes = notes.delete(id);
-    setNotes(newNotes);
+  deleteNote = (id) => {
+    this.setState(prevState => ({
+      notes: prevState.notes.delete(id),
+    }));
   };
 
-  const addNote = (id, note) => {
-    const newNotes = notes.set(id, note);
-    setNotes(newNotes);
+  addNote = (id, note) => {
+    this.setState(prevState => ({
+      notes: prevState.notes.set(id, note),
+    }));
   };
 
-  const updateNote = (id, fields) => {
-    const newNotes = notes.update(id, (n) => {
-      return Object.assign({}, n, fields);
-    });
-    setNotes(newNotes);
+  updateNote = (id, fields) => {
+    this.setState(prevState => ({
+      notes: prevState.notes.update(id, (n) => {
+        return Object.assign({}, n, fields);
+      }),
+    }));
   };
 
-  return (
-    <div id="app">
-      <ToolBar onSubmit={addNote} />
-      <NotesList
-        notes={notes}
-        onUpdateNote={updateNote}
-        onDeleteNote={deleteNote}
-      />
-    </div>
-  );
+  render() {
+    return (
+      <div id="app">
+        <ToolBar onSubmit={this.addNote} />
+        <NotesList
+          notes={this.state.notes}
+          onUpdateNote={this.updateNote}
+          onDeleteNote={this.deleteNote}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;

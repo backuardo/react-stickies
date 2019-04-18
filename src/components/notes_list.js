@@ -1,6 +1,9 @@
 import React from 'react';
 import Note from './note';
 
+/*
+this component may be useless now, and it may be in the future as well...
+*/
 
 const NotesList = (props) => {
   const { notes } = props;

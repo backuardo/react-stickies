@@ -1,43 +1,46 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import Draggable from 'react-draggable';
 
+class Note extends Component {
+  constructor(props) {
+    super(props);
 
-function Note(props) {
-  const [isEditing, setIsEditing] = useState(false);
+    this.state = { isEditing: false };
+  }
 
-  const handleDelete = () => {
-    props.onDelete(props.id);
+  handleDelete = () => {
+    this.props.onDelete(this.props.id);
   };
 
-  const toggleIsEditing = () => {
-    setIsEditing(!isEditing);
+  toggleIsEditing = () => {
+    this.setState(prevState => ({ isEditing: !prevState.isEditing }));
   };
 
-  const handleEdit = (fields) => {
-    props.onUpdate(props.id, fields);
+  handleEdit = (fields) => {
+    this.props.onUpdate(this.props.id, fields);
   };
 
-  const handleTitleChange = (e) => {
-    handleEdit({ title: e.target.value });
+  handleTitleChange = (e) => {
+    this.handleEdit({ title: e.target.value });
   };
 
-  const handleContentChange = (e) => {
-    handleEdit({ content: e.target.value });
+  handleContentChange = (e) => {
+    this.handleEdit({ content: e.target.value });
   };
 
-  const handleDrag = (e, ui) => {
+  handleDrag = (e, ui) => {
     const { x, y } = ui;
-    handleEdit({ x, y });
+    this.handleEdit({ x, y });
   };
 
-  const renderTitle = () => {
-    const { title } = props.note;
-    if (isEditing) {
+  renderTitle = () => {
+    const { title } = this.props.note;
+    if (this.state.isEditing) {
       return (
         <form>
           <input
             value={title}
-            onChange={handleTitleChange}
+            onChange={this.handleTitleChange}
           />
         </form>
       );
@@ -46,14 +49,14 @@ function Note(props) {
     }
   };
 
-  const renderContent = () => {
-    const { content } = props.note;
-    if (isEditing) {
+  renderContent = () => {
+    const { content } = this.props.note;
+    if (this.state.isEditing) {
       return (
         <form>
           <textarea
             value={content}
-            onChange={handleContentChange}
+            onChange={this.handleContentChange}
           />
         </form>
       );
@@ -62,39 +65,43 @@ function Note(props) {
     }
   };
 
-  const { x, y } = props.note;
-  return (
-    <Draggable
-      handle=".fa-arrows-alt"
-      defaultPosition={{ x, y }}
-      position={{ x, y }}
-      onDrag={handleDrag}
-    >
-      <div className="note">
-        <header>
-          {renderTitle()}
-          <div className="note-menu">
-            <i
-              onClick={handleDelete}
-              className="fas fa-trash-alt"
-              role="button"
-              tabIndex={0}
-            />
-            <i
-              onClick={toggleIsEditing}
-              className={isEditing ? 'fas fa-check-circle' : 'fas fa-edit'}
-              role="button"
-              tabIndex={0}
-            />
-            <i className="fas fa-arrows-alt" role="button" tabIndex={0} />
+  render() {
+    const { x, y } = this.props.note;
+    return (
+      <Draggable
+        handle=".fa-arrows-alt"
+        defaultPosition={{ x, y }}
+        position={{ x, y }}
+        onDrag={this.handleDrag}
+      >
+        <div className="note">
+          <header>
+            {this.renderTitle()}
+            <div className="note-menu">
+              <i
+                onClick={this.handleDelete}
+                className="fas fa-trash-alt"
+                role="button"
+                tabIndex={0}
+              />
+              <i
+                onClick={this.toggleIsEditing}
+                className={this.state.isEditing
+                  ? 'fas fa-check-circle'
+                  : 'fas fa-edit'}
+                role="button"
+                tabIndex={0}
+              />
+              <i className="fas fa-arrows-alt" role="button" tabIndex={0} />
+            </div>
+          </header>
+          <div className="note-content">
+            {this.renderContent()}
           </div>
-        </header>
-        <div className="note-content">
-          {renderContent()}
         </div>
-      </div>
-    </Draggable>
-  );
+      </Draggable>
+    );
+  }
 }
 
 export default Note;
