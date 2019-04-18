@@ -12,9 +12,9 @@ class App extends Component {
       notes: Map({
         0: {
           title: 'welcome',
-          content: '# react-notes\n### w/ markdown support\nTo start, make a new note ⬆️',
+          content: '# react-notes\n### w/ markdown support!\nGet started by making a new note ⬆️',
           x: -400,
-          y: 0,
+          y: 20,
           zIndex: 0,
         },
       }),

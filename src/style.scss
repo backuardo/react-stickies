@@ -6,13 +6,11 @@ $red: rgb(232, 63, 76);
 $blue: rgb(94, 144, 227);
 $yellow: rgb(243, 222, 132);
 
-body, html {
+body {
     font-family: 'Montserrat', sans-serif;
-    padding: 0;
-    margin: 0;
     box-sizing: border-box;
     color: rgba( $white, .9 );
-    background-color: $white;
+    background-color: rgba( $grey, .1 );
 }
 
 #app {
@@ -36,7 +34,6 @@ body, html {
   width: 50vw;
   background: linear-gradient(0.25turn, rgba( $black, .9 ), rgba( $grey, .9 ));
   border-radius: 5px;
-  margin: 20px;
   padding: 12px;
   
   form {
