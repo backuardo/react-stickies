@@ -7,7 +7,18 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { notes: Map() }; // eslint-disable-line new-cap
+    this.state = {
+      // eslint-disable-next-line new-cap
+      notes: Map({
+        0: {
+          title: 'welcome to react-notes',
+          content: '# w/ markdown!\n`# h1 ## h2 ### h3`',
+          x: 20,
+          y: 20,
+          zIndex: 0,
+        },
+      }),
+    };
   }
 
   deleteNote = (id) => {

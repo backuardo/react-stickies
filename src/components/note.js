@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable';
 import marked from 'marked';
+import TextareaAutosize from 'react-textarea-autosize';
 
 class Note extends Component {
   constructor(props) {
@@ -55,9 +56,10 @@ class Note extends Component {
     if (this.state.isEditing) {
       return (
         <form>
-          <textarea
+          <TextareaAutosize
             value={content}
             onChange={this.handleContentChange}
+            minRows={6}
           />
         </form>
       );
