@@ -1,108 +1,100 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 
 
-class Note extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isEditing: false,
-    };
-  }
+function Note(props) {
+  const [isEditing, setIsEditing] = useState(false);
 
-  handleDelete = () => {
-    this.props.onDelete(this.props.id);
-  }
+  const handleDelete = () => {
+    props.onDelete(props.id);
+  };
 
-  toggleIsEditing = () => {
-    this.setState(prevState => ({ isEditing: !prevState.isEditing }));
-  }
+  const toggleIsEditing = () => {
+    setIsEditing(!isEditing);
+  };
 
-  handleEdit = (fields) => {
-    this.props.onUpdate(this.props.id, fields);
-  }
+  const handleEdit = (fields) => {
+    props.onUpdate(props.id, fields);
+  };
 
-  handleTitleChange = (e) => {
-    this.handleEdit({ title: e.target.value });
-  }
+  const handleTitleChange = (e) => {
+    handleEdit({ title: e.target.value });
+  };
 
-  handleContentChange = (e) => {
-    this.handleEdit({ content: e.target.value });
-  }
+  const handleContentChange = (e) => {
+    handleEdit({ content: e.target.value });
+  };
 
-  handleDrag = (e, ui) => {
+  const handleDrag = (e, ui) => {
     const { x, y } = ui;
-    this.handleEdit({ x, y });
-  }
+    handleEdit({ x, y });
+  };
 
-  renderTitle = () => {
-    const { title } = this.props.note;
-    if (this.state.isEditing) {
+  const renderTitle = () => {
+    const { title } = props.note;
+    if (isEditing) {
       return (
         <form>
           <input
             value={title}
-            onChange={this.handleTitleChange}
+            onChange={handleTitleChange}
           />
         </form>
       );
     } else {
       return title;
     }
-  }
+  };
 
-  renderContent = () => {
-    const { content } = this.props.note;
-    if (this.state.isEditing) {
+  const renderContent = () => {
+    const { content } = props.note;
+    if (isEditing) {
       return (
         <form>
           <textarea
             value={content}
-            onChange={this.handleContentChange}
+            onChange={handleContentChange}
           />
         </form>
       );
     } else {
       return content;
     }
-  }
+  };
 
-  render() {
-    const { x, y } = this.props.note;
-    return (
-      <Draggable
-        handle=".fa-arrows-alt"
-        defaultPosition={{ x, y }}
-        position={{ x, y }}
-        onDrag={this.handleDrag}
-        onStop={this.handleDragStop}
-      >
-        <div className="note">
-          <header>
-            {this.renderTitle()}
-            <div className="note-menu">
-              <i
-                onClick={this.handleDelete}
-                className="fas fa-trash-alt"
-                role="button"
-                tabIndex={0}
-              />
-              <i
-                onClick={this.toggleIsEditing}
-                className={this.state.isEditing ? 'fas fa-check-circle' : 'fas fa-edit'}
-                role="button"
-                tabIndex={0}
-              />
-              <i className="fas fa-arrows-alt" role="button" tabIndex={0} />
-            </div>
-          </header>
-          <div className="note-content">
-            {this.renderContent()}
+  const { x, y } = props.note;
+  return (
+    <Draggable
+      handle=".fa-arrows-alt"
+      defaultPosition={{ x, y }}
+      position={{ x, y }}
+      onDrag={handleDrag}
+    >
+      <div className="note">
+        <header>
+          {renderTitle()}
+          <div className="note-menu">
+            <i
+              onClick={handleDelete}
+              className="fas fa-trash-alt"
+              role="button"
+              tabIndex={0}
+            />
+            <i
+              onClick={toggleIsEditing}
+              className={isEditing ? 'fas fa-check-circle' : 'fas fa-edit'}
+              role="button"
+              tabIndex={0}
+            />
+            <i className="fas fa-arrows-alt" role="button" tabIndex={0} />
           </div>
+        </header>
+        <div className="note-content">
+          {renderContent()}
         </div>
-      </Draggable>
-    );
-  }
+      </div>
+    </Draggable>
+  );
 }
 
 export default Note;
