@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Draggable from 'react-draggable';
+import marked from 'marked';
 
 class Note extends Component {
   constructor(props) {
@@ -61,7 +62,15 @@ class Note extends Component {
         </form>
       );
     } else {
-      return content;
+      return (
+        <div
+          className="content"
+          // eslint-disable-next-line react/no-danger
+          dangerouslySetInnerHTML={
+            { __html: marked(this.props.note.content || '') }
+          }
+        />
+      );
     }
   };
 
@@ -95,7 +104,7 @@ class Note extends Component {
               <i className="fas fa-arrows-alt" role="button" tabIndex={0} />
             </div>
           </header>
-          <div className="note-content">
+          <div className="note-content-container">
             {this.renderContent()}
           </div>
         </div>

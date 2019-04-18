@@ -29,7 +29,11 @@ body, html {
   flex-basis: 200px;
   background-color: rgba( $black, .2 );
 
-  .note-content {
+  .note-content-container {
     min-height: 100px;
+  }
+
+  .content {
+    // style markdown here!
   }
 }
