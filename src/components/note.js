@@ -60,6 +60,8 @@ class Note extends Component {
             value={content}
             onChange={this.handleContentChange}
             minRows={6}
+            className="text-area"
+            wrap="hard"
           />
         </form>
       );
@@ -80,30 +82,37 @@ class Note extends Component {
     const { x, y } = this.props.note;
     return (
       <Draggable
-        handle=".fa-arrows-alt"
-        defaultPosition={{ x, y }}
+        handle=".fa-expand-arrows-alt"
+        // defaultPosition={{ x, y }}
         position={{ x, y }}
         onDrag={this.handleDrag}
       >
         <div className="note">
           <header>
-            {this.renderTitle()}
+            <h1>{this.renderTitle()}</h1>
             <div className="note-menu">
               <i
                 onClick={this.handleDelete}
-                className="fas fa-trash-alt"
+                className="fas fa-trash"
                 role="button"
                 tabIndex={0}
+                title="Delete Note"
               />
               <i
                 onClick={this.toggleIsEditing}
                 className={this.state.isEditing
-                  ? 'fas fa-check-circle'
-                  : 'fas fa-edit'}
+                  ? 'fas fa-check'
+                  : 'fas fa-marker'}
                 role="button"
                 tabIndex={0}
+                title="Edit Note"
               />
-              <i className="fas fa-arrows-alt" role="button" tabIndex={0} />
+              <i
+                className="fas fa-expand-arrows-alt"
+                role="button"
+                tabIndex={0}
+                title="Move Note"
+              />
             </div>
           </header>
           <div className="note-content-container">

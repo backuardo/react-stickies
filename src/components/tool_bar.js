@@ -35,8 +35,11 @@ class ToolBar extends Component {
             onChange={this.handleInputChange}
             value={this.state.userInput}
             placeholder="enter a title"
+            type="text"
           />
-          <input type="submit" value="new note" />
+          <button type="submit">
+            <i className="fas fa-plus" title="Add Note" />
+          </button>
         </form>
       </div>
     );

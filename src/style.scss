@@ -1,8 +1,18 @@
-$black: rgb(0, 0, 0);
-$white: rgb(255, 255, 255);
+$black: rgb(10, 10, 10);
+$grey: rgb(50, 50, 50);
+$white: rgb(250, 250, 250);
+$green: rgb(73, 193, 99);
+$red: rgb(232, 63, 76);
+$blue: rgb(94, 144, 227);
+$yellow: rgb(243, 222, 132);
 
 body, html {
-    font-family: "Roboto", sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: rgba( $white, .9 );
+    background-color: $white;
 }
 
 #app {
@@ -11,29 +21,180 @@ body, html {
 }
 
 #notes-list {
-  height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: flex-start;
-  background-color: rgba( $black, .1 );
 }
 
 #tool-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: 50vw;
-  background-color: rgba( $black, .4 );
+  background: linear-gradient(0.25turn, rgba( $black, .9 ), rgba( $grey, .9 ));
+  border-radius: 5px;
+  margin: 20px;
+  padding: 12px;
+  
+  form {
+    width: 50%;
+  }
+
+  input[type='text'] {
+    width: 75%;
+    font-size: 1.6em;
+    font-weight: 100;
+    background-color: rgba( $white, .1 );
+    color: rgba( $white, .7 );
+    border: none;
+    border-radius: 2px;
+    padding-left: 4px;
+  }
+
+  input[type='text']:focus {
+    outline: none;
+    background-color: rgba( $white, .2 );
+  }
+
+  button {
+    font-size: 1.8em;
+    border: none;
+    background-color: inherit;
+    color: rgba( $green, .6 );
+  }
+
+  button:hover {
+    cursor: pointer;
+    color: rgba( $green, .9 );
+    outline: none;
+  }
+
+  button:focus {
+    outline: none;
+  }
 }
 
 .note {
-  flex-basis: 140px;
-  background-color: rgba( $black, .2 );
+  min-width: 200px;
+  position: absolute;
+  background: linear-gradient(0.25turn, $black, $grey);
+  padding-left: 14px;
+  padding-right: 14px;
+  border-radius: 5px;
+  box-shadow: 9px 10px 19px -6px $black;
+
+  header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba( $white, .1 );
+    white-space: nowrap;
+
+    h1 {
+      font-size: 1.4em;
+      font-weight: 300;
+    }
+  }
+
+  input {
+    font-size: 1em;
+    font-weight: 100;
+    border: none;
+    background-color: rgba( $white, .2 );
+    color: rgba( $white, 0.7 );
+  }
+
+  input:focus {
+    outline: none;
+    background-color: rgba( $white, .3 );
+  }
+
+  .text-area {
+    width: 100%;
+    font-size: 1em;
+    font-weight: 100;
+    background-color: rgba( $white, .2 );
+    color: rgba( $white, 0.5 );
+    border: none;
+  }
+
+  .text-area:focus {
+    outline: none;
+    background-color: rgba( $white, .3 );
+  }
+
+  .note-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    i {
+      font-size: .8em;
+      padding: 4px;
+      outline: none;
+      font-weight: 600;
+      color: rgba( $white, .6 );
+    }
+
+    i:hover {
+      cursor: pointer;
+    }
+
+    .fa-marker:hover {
+      color: rgba( $blue, .9 );
+    }
+
+    .fa-trash:hover {
+      color: rgba( $red, .9 );
+    }
+
+    .fa-check:hover {
+      color: rgba( $green, .9 );
+    }
+    
+    .fa-expand-arrows-alt:hover {
+      cursor: grab;
+      color: rgba( $yellow, .9 );
+    }
+
+    .fa-expand-arrows-alt:active {
+      cursor: grabbing;
+      color: rgba( $yellow, .9 );
+    }
+  }
 
   .note-content-container {
     min-height: 100px;
   }
 
   .content {
-    // style markdown here!
+    // markdown styles
+    h1 {
+      font-size: 1.5em;
+      font-weight: 700;
+      color: rgba( $white, .9 );
+    }
+
+    h2 {
+      font-size: 1.3em;
+      font-weight: 500;
+      color: rgba( $white, .8 );
+    }
+
+    h3 {
+      font-size: 1.1em;
+      font-weight: 300;
+      color: rgba( $white, .7 );
+    }
+
+    h4, h5, h6, p {
+      font-size: .9em;
+      font-weight: 200;
+      color: rgba( $white, .6 );
+    }
   }
 }

@@ -11,10 +11,10 @@ class App extends Component {
       // eslint-disable-next-line new-cap
       notes: Map({
         0: {
-          title: 'welcome to react-notes',
-          content: '# w/ markdown!\n`# h1 ## h2 ### h3`',
-          x: 20,
-          y: 20,
+          title: 'welcome',
+          content: '# react-notes\n### w/ markdown support\nTo start, make a new note ⬆️',
+          x: -400,
+          y: 0,
           zIndex: 0,
         },
       }),
