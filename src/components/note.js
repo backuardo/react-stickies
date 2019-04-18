@@ -7,9 +7,6 @@ class Note extends Component {
     super(props);
     this.state = {
       isEditing: false,
-      editedTitle: '',
-      editedContent: '',
-      currPosition: null,
     };
   }
 
@@ -17,50 +14,32 @@ class Note extends Component {
     this.props.onDelete(this.props.id);
   }
 
-  handleStartEdit = () => {
+  toggleIsEditing = () => {
     this.setState(prevState => ({ isEditing: !prevState.isEditing }));
   }
 
-  handleEndEdit = () => {
-    const fields = {
-      title: this.state.editedTitle || this.props.note.title,
-      content: this.state.editedContent || this.props.note.content,
-    };
+  handleEdit = (fields) => {
     this.props.onUpdate(this.props.id, fields);
-
-    this.setState(prevState => ({
-      isEditing: !prevState.isEditing,
-      editedTitle: null,
-      editedContent: null,
-    }));
   }
 
   handleTitleChange = (e) => {
-    this.setState({ editedTitle: e.target.value });
+    this.handleEdit({ title: e.target.value });
   }
 
   handleContentChange = (e) => {
-    this.setState({ editedContent: e.target.value });
+    this.handleEdit({ content: e.target.value });
   }
 
   handleDrag = (e, ui) => {
     const { x, y } = ui;
-    this.setState({ currPosition: { x, y } });
-  }
-
-  handleDragStop = () => {
-    const fields = {
-      x: this.state.x,
-      y: this.state.y,
-    };
-    this.props.onUpdate(this.props.id, fields);
+    this.handleEdit({ x, y });
   }
 
   renderEditButton = () => {
     if (this.state.isEditing) {
       return (
         <i
-          onClick={this.handleEndEdit}
+          onClick={this.toggleIsEditing}
           className="fas fa-check-circle"
           role="button"
           tabIndex={0}
@@ -69,7 +48,7 @@ class Note extends Component {
     } else {
       return (
         <i
-          onClick={this.handleStartEdit}
+          onClick={this.toggleIsEditing}
           className="fas fa-edit"
           role="button"
           tabIndex={0}
@@ -83,7 +62,7 @@ class Note extends Component {
       return (
         <form>
           <input
-            value={this.state.editedTitle || this.props.note.title}
+            value={this.props.note.title}
             onChange={this.handleTitleChange}
           />
         </form>
@@ -98,7 +77,7 @@ class Note extends Component {
       return (
         <form>
           <textarea
-            value={this.state.editedContent || this.props.note.content}
+            value={this.props.note.content}
             onChange={this.handleContentChange}
           />
         </form>
@@ -111,15 +90,11 @@ class Note extends Component {
   render() {
     return (
       <Draggable
-        handle=".note"
-        // grid={[25, 25]}
-        defaultPosition={{ x: 20, y: 20 }
-          || { x: this.props.note.x, y: this.props.note.y }}
-        position={this.state.currPosition
-          || { x: this.props.note.x, y: this.props.note.y }}
+        handle=".fa-arrows-alt"
+        defaultPosition={{ x: this.props.note.x, y: this.props.note.y }}
+        position={{ x: this.props.note.x, y: this.props.note.y }}
         onDrag={this.handleDrag}
         onStop={this.handleDragStop}
-        enableUserSelectHack={!this.state.isEditing} // 😂 react-draggable github issues
       >
         <div className="note">
           <header>
@@ -132,6 +107,7 @@ class Note extends Component {
                 tabIndex={0}
               />
               {this.renderEditButton()}
+              <i className="fas fa-arrows-alt" role="button" tabIndex={0} />
             </div>
           </header>
           <div className="note-content">
