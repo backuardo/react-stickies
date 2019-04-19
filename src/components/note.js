@@ -83,7 +83,7 @@ class Note extends Component {
     return (
       <Draggable
         handle=".fa-expand-arrows-alt"
-        // defaultPosition={{ x, y }}
+        defaultPosition={{ x, y }}
         position={{ x, y }}
         onDrag={this.handleDrag}
       >
