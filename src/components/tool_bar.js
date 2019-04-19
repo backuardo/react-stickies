@@ -12,7 +12,6 @@ class ToolBar extends Component {
   };
 
   handleSubmit = (e) => {
-    const id = Math.floor(Math.random() * Math.floor(100));
     const note = {
       title: this.state.userInput,
       content: '',
@@ -21,7 +20,7 @@ class ToolBar extends Component {
       zIndex: 100,
     };
 
-    this.props.onSubmit(id, note);
+    this.props.onSubmit(note);
     this.setState({ userInput: '' });
     e.preventDefault();
   };

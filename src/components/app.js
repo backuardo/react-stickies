@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Map } from 'immutable';
+import * as db from '../services/datastore';
 import ToolBar from './tool_bar';
 import NotesList from './notes_list';
 
@@ -8,48 +9,40 @@ class App extends Component {
     super(props);
 
     this.state = {
-      // eslint-disable-next-line new-cap
-      notes: Map({
-        0: {
-          title: 'welcome',
-          content: '# react-notes\n### w/ markdown support!\nGet started by making a new note ⬆️',
-          x: -400,
-          y: 20,
-          zIndex: 0,
-        },
-      }),
+      notes: null,
     };
   }
 
+  componentDidMount() {
+    db.fetchNotes((notes) => {
+      // eslint-disable-next-line new-cap
+      this.setState({ notes: Map(notes) });
+    });
+  }
+
   deleteNote = (id) => {
-    this.setState(prevState => ({
-      notes: prevState.notes.delete(id),
-    }));
+    db.deleteNote(id);
   };
 
-  addNote = (id, note) => {
-    this.setState(prevState => ({
-      notes: prevState.notes.set(id, note),
-    }));
+  addNote = (note) => {
+    db.addNote(note);
   };
 
   updateNote = (id, fields) => {
-    this.setState(prevState => ({
-      notes: prevState.notes.update(id, (n) => {
-        return Object.assign({}, n, fields);
-      }),
-    }));
+    db.updateNote(id, fields);
   };
 
   render() {
     return (
       <div id="app">
         <ToolBar onSubmit={this.addNote} />
-        <NotesList
-          notes={this.state.notes}
-          onUpdateNote={this.updateNote}
-          onDeleteNote={this.deleteNote}
-        />
+        {this.state.notes && (
+          <NotesList
+            notes={this.state.notes}
+            onUpdateNote={this.updateNote}
+            onDeleteNote={this.deleteNote}
+          />
+        )}
       </div>
     );
   }
