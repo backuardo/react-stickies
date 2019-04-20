@@ -47,7 +47,7 @@ class ToolBar extends Component {
           <input
             onChange={this.handleInputChange}
             value={this.state.userInput}
-            placeholder="enter a title"
+            placeholder="my new note"
             type="text"
           />
           <button type="submit">

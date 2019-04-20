@@ -58,13 +58,17 @@ input, .text-area {
     background: linear-gradient(0.25turn, lighten( $grey, 50% ), $white);
     box-shadow: 0 2px 15px 0 rgba( $black, .1 );
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
     padding-left: 4px;
   }
 
   input[type='text']:focus {
     outline: none;
     box-shadow: 0 2px 15px 0 rgba( $black, .2 );
+  }
+
+  input[type='text']::placeholder {
+    color: $grey;
   }
 
   button {
@@ -93,7 +97,7 @@ input, .text-area {
   min-width: 200px;
   position: absolute;
   background: linear-gradient(0.25turn, lighten( $grey, 50% ), $white);
-  border-radius: 5px;
+  border-radius: 3px;
   box-shadow: 0 2px 15px 0 rgba( $black, .2 );
   z-index: 0;
 
@@ -106,7 +110,7 @@ input, .text-area {
     padding-left: 14px;
     padding-right: 14px;
     background-color: rgba( $grey, .4 );
-    border-radius: 5px 5px 0 0;
+    border-radius: 3px 3px 0 0;
 
     h1 {
       font-size: 1.4em;
@@ -117,12 +121,12 @@ input, .text-area {
 
   header:hover {
     cursor: grab;
-    background-color: rgba( $grey, .9 );
+    background-color: rgba( $grey, .7 );
   }
 
   header:active {
     cursor: grabbing;
-    background-color: rgba( $grey, .9 );
+    background-color: rgba( $grey, .7 );
   }
 
   input {
@@ -212,10 +216,6 @@ input, .text-area {
 
     a:hover {
       color: darken( $blue, 10% );
-    }
-
-    img {
-      border-radius: 3px;
     }
   }
 }

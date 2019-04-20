@@ -93,13 +93,6 @@ class Note extends Component {
             <h1>{this.renderTitle()}</h1>
             <div className="note-menu">
               <i
-                onClick={this.handleDelete}
-                className="fas fa-trash"
-                role="button"
-                tabIndex={0}
-                title="Delete note"
-              />
-              <i
                 onClick={this.toggleIsEditing}
                 className={this.state.isEditing
                   ? 'fas fa-check'
@@ -107,6 +100,13 @@ class Note extends Component {
                 role="button"
                 tabIndex={0}
                 title="Edit note"
+              />
+              <i
+                onClick={this.handleDelete}
+                className="fas fa-trash"
+                role="button"
+                tabIndex={0}
+                title="Delete note"
               />
             </div>
           </header>
