@@ -31,7 +31,6 @@ body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 50vw;
   background: linear-gradient(0.25turn, rgba( $black, .9 ), rgba( $grey, .9 ));
   border-radius: 5px;
   padding: 12px;
@@ -41,7 +40,7 @@ body {
   }
 
   input[type='text'] {
-    width: 75%;
+    min-width: 75%;
     font-size: 1.6em;
     font-weight: 100;
     background-color: rgba( $white, .1 );
@@ -77,7 +76,7 @@ body {
 .note {
   min-width: 200px;
   position: absolute;
-  background: linear-gradient(0.25turn, $black, $grey);
+  background: linear-gradient(0.25turn, rgba( $black, .9 ), rgba( $grey, .9 ));
   padding-left: 14px;
   padding-right: 14px;
   border-radius: 5px;
@@ -192,6 +191,10 @@ body {
       font-size: .9em;
       font-weight: 200;
       color: rgba( $white, .6 );
+    }
+
+    img {
+      border-radius: 3px;
     }
   }
 }

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Typed from 'react-typed';
 
 class ToolBar extends Component {
   constructor(props) {
@@ -28,7 +29,20 @@ class ToolBar extends Component {
   render() {
     return (
       <div id="tool-bar">
-        <h1>react-notes</h1>
+        <Typed
+          strings={
+            [
+              'welcome to react-notes ',
+              'you can take normal notes or markdown notes ',
+              'react-notes :) ',
+            ]
+          }
+          typeSpeed={125}
+          backSpeed={90}
+          startDelay={300}
+          backDelay={70}
+          showCursor={false}
+        />
         <form onSubmit={this.handleSubmit}>
           <input
             onChange={this.handleInputChange}
@@ -37,7 +51,7 @@ class ToolBar extends Component {
             type="text"
           />
           <button type="submit">
-            <i className="fas fa-plus" title="Add Note" />
+            <i className="fas fa-plus" />
           </button>
         </form>
       </div>
