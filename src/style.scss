@@ -32,8 +32,8 @@ input, .text-area {
 
 #tool-bar {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding-left: 12px;
   padding-right: 12px;
@@ -63,12 +63,12 @@ input, .text-area {
     font-size: 1.8em;
     border: none;
     background-color: inherit;
-    color: rgba( $black, .5 );
+    color: lighten( $blue, 20% );
   }
 
   button:hover {
     cursor: pointer;
-    color: rgba( $green, .9 );
+    color: lighten( $blue, 10% );
     outline: none;
   }
 
@@ -77,12 +77,16 @@ input, .text-area {
   }
 }
 
+#note-selected {
+  z-index: 100;
+}
+
 .note {
   min-width: 200px;
   position: absolute;
   background: linear-gradient(0.25turn, lighten( $grey, 50% ), $white);
   border-radius: 5px;
-  box-shadow: 0 2px 15px 0 rgba( $black, .3 );
+  box-shadow: 0 2px 15px 0 rgba( $black, .2 );
 
   header {
     display: flex;
@@ -100,6 +104,16 @@ input, .text-area {
       font-weight: 300;
       margin: 0;
     }
+  }
+
+  header:hover {
+    cursor: grab;
+    background-color: rgba( $grey, .9 );
+  }
+
+  header:active {
+    cursor: grabbing;
+    background-color: rgba( $grey, .9 );
   }
 
   input {
@@ -141,32 +155,12 @@ input, .text-area {
       padding: 4px;
       outline: none;
       font-weight: 600;
-      color: rgba( $black, .6 );
+      color: rgba( $black, .4 );
     }
 
     i:hover {
       cursor: pointer;
-    }
-
-    .fa-marker:hover {
-      color: rgba( $green, .9 );
-    }
-
-    .fa-trash:hover {
-      color: rgba( $red, .9 );
-    }
-
-    .fa-check:hover {
-      color: rgba( $green, .9 );
-    }
-    
-    .fa-expand-arrows-alt:hover {
-      cursor: grab;
-      color: rgba( $blue, .9 );
-    }
-
-    .fa-expand-arrows-alt:active {
-      cursor: grabbing;
+      color: rgba( $black, .6 );
     }
   }
 

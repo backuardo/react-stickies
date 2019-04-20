@@ -82,14 +82,14 @@ class Note extends Component {
     const { x, y } = this.props.note;
     return (
       <Draggable
-        handle=".fa-expand-arrows-alt"
+        handle="header"
         defaultPosition={{ x, y }}
         position={{ x, y }}
         onDrag={this.handleDrag}
         bounds="#main"
       >
         <div className="note">
-          <header>
+          <header title="Move note">
             <h1>{this.renderTitle()}</h1>
             <div className="note-menu">
               <i
@@ -97,7 +97,7 @@ class Note extends Component {
                 className="fas fa-trash"
                 role="button"
                 tabIndex={0}
-                title="Delete Note"
+                title="Delete note"
               />
               <i
                 onClick={this.toggleIsEditing}
@@ -106,13 +106,7 @@ class Note extends Component {
                   : 'fas fa-marker'}
                 role="button"
                 tabIndex={0}
-                title="Edit Note"
-              />
-              <i
-                className="fas fa-expand-arrows-alt"
-                role="button"
-                tabIndex={0}
-                title="Move Note"
+                title="Edit note"
               />
             </div>
           </header>
