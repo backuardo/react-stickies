@@ -54,6 +54,9 @@ class ToolBar extends Component {
             <i className="fas fa-clone" />
           </button>
         </form>
+        <p>
+          Enter a title to start a note, then click and drag your note&#39;s title to move it.<br />
+        </p>
       </div>
     );
   }

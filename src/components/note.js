@@ -79,7 +79,7 @@ class Note extends Component {
   };
 
   render() {
-    const { x, y } = this.props.note;
+    const { x, y, zIndex } = this.props.note;
     return (
       <Draggable
         handle="header"
@@ -88,7 +88,7 @@ class Note extends Component {
         onDrag={this.handleDrag}
         bounds="#main"
       >
-        <div className="note">
+        <div className="note" style={{ zIndex }}>
           <header title="Move note">
             <h1>{this.renderTitle()}</h1>
             <div className="note-menu">

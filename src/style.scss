@@ -40,7 +40,15 @@ input, .text-area {
   padding-bottom: 8px;
 
   .tool-bar-typed {
-    font-size: 1.6em;
+    font-size: 2em;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-weight: 100;
+    font-size: .7em;
+    margin: 0;
+    color: rgba( $black, .4 );
   }
 
   input[type='text'] {
@@ -87,6 +95,7 @@ input, .text-area {
   background: linear-gradient(0.25turn, lighten( $grey, 50% ), $white);
   border-radius: 5px;
   box-shadow: 0 2px 15px 0 rgba( $black, .2 );
+  z-index: 0;
 
   header {
     display: flex;
@@ -96,7 +105,7 @@ input, .text-area {
     white-space: nowrap;
     padding-left: 14px;
     padding-right: 14px;
-    background-color: rgba( $grey, .7 );
+    background-color: rgba( $grey, .4 );
     border-radius: 5px 5px 0 0;
 
     h1 {
@@ -120,7 +129,7 @@ input, .text-area {
     font-size: 1em;
     font-weight: 300;
     border: none;
-    background-color: rgba( $grey, .2 );
+    background-color: rgba( $grey, .6 );
     color: rgba( $black, 0.7 );
   }
 
@@ -208,5 +217,13 @@ input, .text-area {
     img {
       border-radius: 3px;
     }
+  }
+}
+
+.note:hover {
+  box-shadow: 0 2px 15px 0 rgba( $black, .3 );
+
+  input:hover {
+    background-color: darken( $grey, 4% );
   }
 }
