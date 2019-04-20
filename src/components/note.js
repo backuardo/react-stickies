@@ -86,6 +86,7 @@ class Note extends Component {
         defaultPosition={{ x, y }}
         position={{ x, y }}
         onDrag={this.handleDrag}
+        bounds="#main"
       >
         <div className="note">
           <header>

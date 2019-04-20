@@ -3,15 +3,14 @@ $grey: rgb(210, 214, 220);
 $white: rgb(250, 250, 250);
 $green: rgb(73, 193, 99);
 $red: rgb(232, 63, 76);
-$blue: rgb(94, 144, 227);
-$yellow: rgb(243, 222, 132);
+$blue: rgb(100, 94, 157);
+$yellow: rgb(239, 215, 128);
 
 body {
     font-family: 'Lato', sans-serif;
     box-sizing: border-box;
     color: rgba( $black, .9 );
-    // background-color: lighten( $grey, 100% );
-    background-color: rgba( $green, .1 );
+    background-color: rgba( $blue, .2 );
 }
 
 input, .text-area {
@@ -36,30 +35,28 @@ input, .text-area {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-radius: 5px;
-  padding: 12px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-bottom: 8px;
 
   .tool-bar-typed {
-    font-size: 1.4em;
-  }
-  
-  form {
-    margin-right: 12px;
+    font-size: 1.6em;
   }
 
   input[type='text'] {
     min-width: 400px;
     font-size: 1.6em;
     font-weight: 300;
-    background-color: rgba( $grey, .3 );
+    background: linear-gradient(0.25turn, lighten( $grey, 50% ), $white);
+    box-shadow: 0 2px 15px 0 rgba( $black, .1 );
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     padding-left: 4px;
   }
 
   input[type='text']:focus {
     outline: none;
-    background-color: rgba( $grey, .4 );
+    box-shadow: 0 2px 15px 0 rgba( $black, .2 );
   }
 
   button {
@@ -84,22 +81,24 @@ input, .text-area {
   min-width: 200px;
   position: absolute;
   background: linear-gradient(0.25turn, lighten( $grey, 50% ), $white);
-  padding-left: 14px;
-  padding-right: 14px;
   border-radius: 5px;
-  box-shadow: 0 2px 15px 0 rgba( $grey, 0.8 );
+  box-shadow: 0 2px 15px 0 rgba( $black, .3 );
 
   header {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba( $black, .1 );
     white-space: nowrap;
+    padding-left: 14px;
+    padding-right: 14px;
+    background-color: rgba( $grey, .7 );
+    border-radius: 5px 5px 0 0;
 
     h1 {
       font-size: 1.4em;
       font-weight: 300;
+      margin: 0;
     }
   }
 
@@ -123,6 +122,8 @@ input, .text-area {
     background-color: rgba( $grey, .2 );
     color: rgba( $black, 0.5 );
     border: none;
+    margin-bottom: 12px;
+    margin-top: 12px;
   }
 
   .text-area:focus {
@@ -148,7 +149,7 @@ input, .text-area {
     }
 
     .fa-marker:hover {
-      color: rgba( $blue, .9 );
+      color: rgba( $green, .9 );
     }
 
     .fa-trash:hover {
@@ -161,17 +162,18 @@ input, .text-area {
     
     .fa-expand-arrows-alt:hover {
       cursor: grab;
-      color: rgba( $yellow, .9 );
+      color: rgba( $blue, .9 );
     }
 
     .fa-expand-arrows-alt:active {
       cursor: grabbing;
-      color: rgba( $yellow, .9 );
     }
   }
 
   .note-content-container {
     min-height: 100px;
+    padding-left: 14px;
+    padding-right: 14px;
   }
 
   .content {

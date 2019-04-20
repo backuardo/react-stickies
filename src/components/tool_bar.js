@@ -15,7 +15,7 @@ class ToolBar extends Component {
   handleSubmit = (e) => {
     const note = {
       title: this.state.userInput,
-      content: 'Great, now click the pen icon to edit this note!',
+      content: 'Great, now click the pen icon to edit',
       x: 0,
       y: 0,
       zIndex: 100,
@@ -32,16 +32,15 @@ class ToolBar extends Component {
         <Typed
           strings={
             [
-              'welcome!!',
-              'react-notes',
+              'reactnotes.surge.sh',
+              'react notes',
             ]
           }
-          typeSpeed={125}
-          backSpeed={90}
-          startDelay={300}
+          typeSpeed={90}
+          backSpeed={100}
           backDelay={70}
           showCursor={false}
-          fadeOut
+          smartBackspace
           className="tool-bar-typed"
         />
         <form onSubmit={this.handleSubmit}>
