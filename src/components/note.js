@@ -86,7 +86,7 @@ class Note extends Component {
         defaultPosition={{ x, y }}
         position={{ x, y }}
         onDrag={this.handleDrag}
-        bounds="#main"
+        disabled={this.state.isEditing}
       >
         <div className="note" style={{ zIndex }}>
           <header title="Move note">
