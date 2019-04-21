@@ -88,7 +88,10 @@ class Note extends Component {
         onDrag={this.handleDrag}
         disabled={!this.props.user || this.state.isEditing}
       >
-        <div className="note" style={{ zIndex }}>
+        <div
+          className={this.props.user ? 'note' : 'note note-inactive'}
+          style={{ zIndex }}
+        >
           <header title="Move note">
             <h1>{this.renderTitle()}</h1>
             {this.props.user && (
