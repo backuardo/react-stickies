@@ -86,11 +86,12 @@ class Note extends Component {
         defaultPosition={{ x, y }}
         position={{ x, y }}
         onDrag={this.handleDrag}
-        disabled={this.state.isEditing}
+        disabled={!this.props.user || this.state.isEditing}
       >
         <div className="note" style={{ zIndex }}>
           <header title="Move note">
             <h1>{this.renderTitle()}</h1>
+            {this.props.user && (
             <div className="note-menu">
               <i
                 onClick={this.toggleIsEditing}
@@ -109,6 +110,7 @@ class Note extends Component {
                 title="Delete note"
               />
             </div>
+            )}
           </header>
           <div className="note-content-container">
             {this.renderContent()}

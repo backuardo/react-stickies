@@ -21,6 +21,7 @@ const NotesList = (props) => {
             note={note}
             onUpdate={props.onUpdateNote}
             onDelete={props.onDeleteNote}
+            user={props.user}
           />
         );
       })}

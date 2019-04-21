@@ -1,17 +1,5 @@
-import firebase from 'firebase/app';
 import 'firebase/database';
-
-
-const config = {
-  apiKey: 'AIzaSyAycbpm69g7DLaJcTYiSTICwFuhnmJAaxA',
-  authDomain: 'react-notes-3e0ab.firebaseapp.com',
-  databaseURL: 'https://react-notes-3e0ab.firebaseio.com',
-  projectId: 'react-notes-3e0ab',
-  storageBucket: 'react-notes-3e0ab.appspot.com',
-  messagingSenderId: '85222766707',
-};
-
-firebase.initializeApp(config);
+import firebase from './firebase';
 
 export function fetchNotes(callback) {
   firebase.database().ref('notes').on('value', (snapshot) => {

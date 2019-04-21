@@ -43,20 +43,46 @@ class ToolBar extends Component {
           smartBackspace
           className="tool-bar-typed"
         />
-        <form onSubmit={this.handleSubmit}>
-          <input
-            onChange={this.handleInputChange}
-            value={this.state.userInput}
-            placeholder="my new note"
-            type="text"
-          />
-          <button type="submit">
-            <i className="fas fa-clone" />
-          </button>
-        </form>
-        <p>
-          Enter a title to start a note, then click and drag your note&#39;s title to move it.<br />
-        </p>
+        {!this.props.user
+          ? (
+            <div className="signed-out-auth-section">
+              <h2>Please sign in with Gmail to create and edit notes</h2>
+              <button
+                onClick={this.props.onSignIn}
+                type="button"
+              >
+                Sign in
+              </button>
+            </div>
+          ) : (
+            <div>
+              <div className="signed-in-auth-section">
+                <h2>Welcome, {this.props.user.displayName} ✌️</h2>
+                <button
+                  onClick={this.props.onSignOut}
+                  type="button"
+                >
+                  Sign out
+                </button>
+              </div>
+              <form onSubmit={this.handleSubmit}>
+                <input
+                  onChange={this.handleInputChange}
+                  value={this.state.userInput}
+                  placeholder="my new note"
+                  type="text"
+                />
+                <button type="submit">
+                  <i className="fas fa-clone" />
+                </button>
+              </form>
+              <p>
+                Enter a title to start a note,
+                then click and drag your note&#39;s title to move it.<br />
+              </p>
+            </div>
+          )
+        }
       </div>
     );
   }
