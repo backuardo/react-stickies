@@ -1,10 +1,7 @@
 $black: rgb(10, 10, 10);
 $grey: rgb(210, 214, 220);
 $white: rgb(250, 250, 250);
-$green: rgb(73, 193, 99);
-$red: rgb(232, 63, 76);
-$blue: rgb(100, 94, 157);
-$yellow: rgb(239, 215, 128);
+$blue: rgb(4, 97, 207);
 
 body {
     font-family: 'Lato', sans-serif;
@@ -48,7 +45,7 @@ input, .text-area {
     font-weight: 100;
     font-size: .7em;
     margin: 6px;
-    color: rgba( $black, .4 );
+    color: rgba( $black, .5 );
   }
 
   input[type='text'] {
