@@ -17,7 +17,7 @@ class ToolBar extends Component {
       content: 'Great, now click the pen icon to edit',
       x: 0,
       y: 0,
-      zIndex: 1,
+      zIndex: this.props.nextZIndex,
       author: this.props.user.displayName,
     };
 

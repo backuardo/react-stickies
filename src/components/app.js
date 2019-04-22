@@ -53,6 +53,8 @@ class App extends Component {
   }
 
   getHighestZIndex = () => {
+    if (!this.state.notes) { return 0; }
+
     const topNote = this.state.notes.sortBy(note => note.zIndex).last();
     if (topNote) {
       return topNote.zIndex;
@@ -70,6 +72,7 @@ class App extends Component {
           onSignIn={this.handleSignIn}
           onSignOut={this.handleSignOut}
           user={user}
+          nextZIndex={this.getHighestZIndex() + 1}
         />
         <div id="notes-list">
           {notes && (notes.size > 0) && notes.entrySeq().map(([id, note]) => {
