@@ -23,6 +23,7 @@ class App extends Component {
     db.fetchNotes((notes) => {
       // eslint-disable-next-line new-cap
       this.setState({ notes: Map(notes) });
+      this.getHighestZIndex();
     });
   }
 
@@ -46,6 +47,20 @@ class App extends Component {
     db.updateNote(id, fields);
   };
 
+  updateNoteZIndex = (id) => {
+    const zIndex = this.getHighestZIndex() + 1;
+    this.updateNote(id, { zIndex });
+  }
+
+  getHighestZIndex = () => {
+    const topNote = this.state.notes.sortBy(note => note.zIndex).last();
+    if (topNote) {
+      return topNote.zIndex;
+    } else {
+      return 0;
+    }
+  }
+
   render() {
     const { notes, user } = this.state;
     return (
@@ -65,6 +80,7 @@ class App extends Component {
                 note={note}
                 onUpdate={this.updateNote}
                 onDelete={this.deleteNote}
+                onStartDrag={this.updateNoteZIndex}
                 user={user}
               />
             );

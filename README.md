@@ -3,6 +3,7 @@
 Extra credit:
 
 * authentication
+* z-index adjustment (most recently-dragged note is on top)
 
 ## What I did
 

@@ -79,29 +79,38 @@ class Note extends Component {
   };
 
   render() {
+    const { isEditing } = this.state;
+    const {
+      onStartDrag,
+      id,
+      user,
+      note,
+    } = this.props;
     const {
       x, y, zIndex,
-    } = this.props.note;
+    } = note;
+
     return (
       <Draggable
         handle="header"
         defaultPosition={{ x, y }}
         position={{ x, y }}
         onDrag={this.handleDrag}
-        disabled={!this.props.user || this.state.isEditing}
+        onStart={() => onStartDrag(id)}
+        disabled={!user || isEditing}
         bounds={{ top: 0 }}
       >
         <div
-          className={this.props.user ? 'note' : 'note note-inactive'}
+          className={user ? 'note' : 'note note-inactive'}
           style={{ zIndex }}
         >
           <header title="Move note">
             <h1>{this.renderTitle()}</h1>
-            {this.props.user && (
+            {user && (
             <div className="note-menu">
               <i
                 onClick={this.toggleIsEditing}
-                className={this.state.isEditing
+                className={isEditing
                   ? 'fas fa-check'
                   : 'fas fa-marker'}
                 role="button"
