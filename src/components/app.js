@@ -19,14 +19,15 @@ class App extends Component {
     auth.persistSignIn((user) => {
       this.setState({ user });
       // github.com/firebase/quickstart-js/issues/58#issuecomment-244492935
-      // this prevents flashing sign-in screen for persisted sign in
-      document.body.style.display = 'inline-block';
     });
 
     db.fetchNotes((notes) => {
       // eslint-disable-next-line new-cap
       this.setState({ notes: Map(notes) });
     });
+
+    // this prevents flashing sign-in screen for persisted sign in
+    document.body.style.display = 'inline-block';
   }
 
   handleSignIn = () => {
