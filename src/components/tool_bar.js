@@ -18,6 +18,7 @@ class ToolBar extends Component {
       x: 0,
       y: 0,
       zIndex: 100,
+      author: this.props.user.displayName,
     };
 
     this.props.onSubmit(note);

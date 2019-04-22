@@ -79,7 +79,9 @@ class Note extends Component {
   };
 
   render() {
-    const { x, y, zIndex } = this.props.note;
+    const {
+      x, y, zIndex,
+    } = this.props.note;
     return (
       <Draggable
         handle="header"
