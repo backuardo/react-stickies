@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 import * as db from '../services/datastore';
 import * as auth from '../services/auth';
 import ToolBar from './tool_bar';
-import NotesList from './notes_list';
+import Note from './note';
 
 class App extends Component {
   constructor(props) {
@@ -50,22 +50,29 @@ class App extends Component {
   };
 
   render() {
+    const { notes, user } = this.state;
     return (
       <div id="app">
         <ToolBar
           onSubmit={this.addNote}
           onSignIn={this.handleSignIn}
           onSignOut={this.handleSignOut}
-          user={this.state.user}
+          user={user}
         />
-        {this.state.notes && (
-          <NotesList
-            notes={this.state.notes}
-            onUpdateNote={this.updateNote}
-            onDeleteNote={this.deleteNote}
-            user={this.state.user}
-          />
-        )}
+        <div id="notes-list">
+          {notes && (notes.size > 0) && notes.entrySeq().map(([id, note]) => {
+            return (
+              <Note
+                key={id}
+                id={id}
+                note={note}
+                onUpdate={this.updateNote}
+                onDelete={this.deleteNote}
+                user={user}
+              />
+            );
+          })}
+        </div>
       </div>
     );
   }

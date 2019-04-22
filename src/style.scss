@@ -39,11 +39,13 @@ input, .text-area {
   padding-bottom: 8px;
   z-index: 1000;
   background-color: rgba( $blue, .2 );
-  box-shadow: 0 2px 15px 0 rgba( $black, .1 );
-  border-bottom: 1px solid rgba( $black, .1 );
+  box-shadow: 0 2px 15px 0 rgba( $black, .15 );
 
-  .tool-bar-typed {
-    font-size: 2em;
+  h1 {
+    font-size: 2.4em;
+    color: rgba( $black, .8 );
+    font-family: 'Permanent Marker', cursive;
+    margin: 0;
   }
 
   .signed-out-tool-bar {
@@ -108,7 +110,8 @@ input, .text-area {
       color: rgba( $black, .6 );
       height: 100%;
       border-radius: 3px;
-      padding: 4px;
+      padding-left: 4px;
+      padding-right: 4px;
       border: 1px solid rgba( $black, .1 );
       background: inherit;
       margin-right: 42px;
@@ -183,7 +186,6 @@ input, .text-area {
   background: linear-gradient(0.25turn, lighten( $grey, 50% ), $white);
   border-radius: 3px;
   box-shadow: 0 2px 15px 0 rgba( $black, .2 );
-  z-index: 0;
 
   header {
     display: flex;
@@ -320,7 +322,6 @@ input, .text-area {
 
     button[type='button'] {
       margin-right: 0;
-      border: none;
     }
   }
 }

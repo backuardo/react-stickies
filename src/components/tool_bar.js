@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Typed from 'react-typed';
 
 class ToolBar extends Component {
   constructor(props) {
@@ -29,20 +28,7 @@ class ToolBar extends Component {
   render() {
     return (
       <div id="tool-bar">
-        <Typed
-          strings={
-            [
-              'reactnotes.surge.sh',
-              'react notes',
-            ]
-          }
-          typeSpeed={90}
-          backSpeed={100}
-          backDelay={70}
-          showCursor={false}
-          smartBackspace
-          className="tool-bar-typed"
-        />
+        <h1>React Notes</h1>
         {!this.props.user
           ? (
             <div className="signed-out-tool-bar">
@@ -57,7 +43,10 @@ class ToolBar extends Component {
           ) : (
             <div>
               <div className="signed-in-tool-bar">
-                <h2>Welcome, {this.props.user.displayName} ✌️</h2>
+                <h2>Welcome,
+                  <strong> {this.props.user.displayName} </strong>
+                  ✌️
+                </h2>
                 <button
                   onClick={this.props.onSignOut}
                   type="button"
@@ -72,7 +61,7 @@ class ToolBar extends Component {
                   placeholder="my new note"
                   type="text"
                 />
-                <button type="submit">
+                <button type="submit" title="Add note">
                   <i className="fas fa-clone" />
                 </button>
               </form>
