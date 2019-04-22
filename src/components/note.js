@@ -87,6 +87,7 @@ class Note extends Component {
         position={{ x, y }}
         onDrag={this.handleDrag}
         disabled={!this.props.user || this.state.isEditing}
+        bounds={{ top: 0 }}
       >
         <div
           className={this.props.user ? 'note' : 'note note-inactive'}
