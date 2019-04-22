@@ -4,11 +4,11 @@ $white: rgb(250, 250, 250);
 $blue: rgb(4, 97, 207);
 
 body {
-  display: none; // https://github.com/firebase/quickstart-js/issues/58#issuecomment-244492935
+  display: none; // github.com/firebase/quickstart-js/issues/58#issuecomment-244492935
   font-family: 'Lato', sans-serif;
   box-sizing: border-box;
   color: rgba( $black, .9 );
-  background-color: rgba( $blue, .2 );
+  background-color: rgba( $blue, .1 );
   margin: 0;
 }
 
@@ -38,7 +38,7 @@ input, .text-area {
   padding-right: 12px;
   padding-bottom: 8px;
   z-index: 1000;
-  background-color: rgba( $blue, .3 );
+  background-color: rgba( $blue, .2 );
   box-shadow: 0 2px 15px 0 rgba( $black, .1 );
   border-bottom: 1px solid rgba( $black, .1 );
 
@@ -46,7 +46,7 @@ input, .text-area {
     font-size: 2em;
   }
 
-  .signed-out-auth-section {
+  .signed-out-tool-bar {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -88,7 +88,7 @@ input, .text-area {
     }
   }
 
-  .signed-in-auth-section {
+  .signed-in-tool-bar {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -309,5 +309,18 @@ input, .text-area {
 
   input:hover {
     background-color: darken( $grey, 4% );
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  #tool-bar {
+    button[type='submit'] {
+      display: none;
+    }
+
+    button[type='button'] {
+      margin-right: 0;
+      border: none;
+    }
   }
 }

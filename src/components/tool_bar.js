@@ -45,7 +45,7 @@ class ToolBar extends Component {
         />
         {!this.props.user
           ? (
-            <div className="signed-out-auth-section">
+            <div className="signed-out-tool-bar">
               <h2>Please sign in with Gmail to create and edit notes</h2>
               <button
                 onClick={this.props.onSignIn}
@@ -56,7 +56,7 @@ class ToolBar extends Component {
             </div>
           ) : (
             <div>
-              <div className="signed-in-auth-section">
+              <div className="signed-in-tool-bar">
                 <h2>Welcome, {this.props.user.displayName} ✌️</h2>
                 <button
                   onClick={this.props.onSignOut}
