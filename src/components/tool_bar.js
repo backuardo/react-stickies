@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import GithubCorner from 'react-github-corner';
 
 class ToolBar extends Component {
   constructor(props) {
@@ -29,7 +30,13 @@ class ToolBar extends Component {
   render() {
     return (
       <div id="tool-bar">
-        <h1>React Notes</h1>
+        <h1>react-stickies</h1>
+        <GithubCorner
+          href="https://github.com/beneisnr/react-stickies"
+          octoColor="rgb(15, 161, 135)"
+          bannerColor="rgb(19, 208, 174)"
+          className="github-icon"
+        />
         {!this.props.user
           ? (
             <div className="signed-out-tool-bar">
