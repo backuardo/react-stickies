@@ -1,2 +1,2 @@
 # [react-stickies](https://react-stickies.surge.sh)
-A collaborative sticky note application using Firebase BAAS
+A collaborative sticky Markdown note application using Firebase BAAS
