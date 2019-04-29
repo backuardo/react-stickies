@@ -23,11 +23,17 @@ class Note extends Component {
   };
 
   handleTitleChange = (e) => {
-    this.handleEdit({ title: e.target.value });
+    this.handleEdit({
+      title: e.target.value,
+      lastEditedBy: this.props.user.displayName,
+    });
   };
 
   handleContentChange = (e) => {
-    this.handleEdit({ content: e.target.value });
+    this.handleEdit({
+      content: e.target.value,
+      lastEditedBy: this.props.user.displayName,
+    });
   };
 
   handleDrag = (e, ui) => {
