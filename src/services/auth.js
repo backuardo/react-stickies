@@ -1,8 +1,6 @@
 import 'firebase/auth';
 import firebase from './firebase';
 
-// looked at css-tricks.com/firebase-react-part-2-user-authentication/
-
 const provider = new firebase.auth.GoogleAuthProvider();
 const auth = firebase.auth();
 
